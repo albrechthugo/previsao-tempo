@@ -1,0 +1,42 @@
+.capitals__container {
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 4rem;
+    padding-right: 4rem;
+}
+
+.capitals__container h1 {
+    align-self: flex-start;
+    font-size: 2.4rem;
+}
+
+.capitals__container .capitals__row {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.capitals__container .capitals__row .capitals__content {
+    display: flex;
+}
+
+.capitals__container .capitals__row .capitals__content:last-child {
+    margin-left: 14rem;
+}
+
+.capitals__container .capitals__row .capitals__content p {
+    font-size: 0.8rem;
+    color: var(--grey);
+}
+
+.capitals__container .capitals__row .capitals__content p:last-child {
+    margin-left: 1rem;
+}
+
+@media (min-width: 290px) and (max-width: 500px) {
+    .capitals__container {
+        margin-left: 0rem;
+        padding-left: 2rem;
+    }
+}

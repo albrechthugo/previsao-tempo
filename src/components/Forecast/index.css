@@ -1,0 +1,123 @@
+.city-forecast__container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 3rem;
+    background-color: var(--beige);
+    box-shadow: 0px 0px 3px var(--grey);
+}
+
+.city-forecast__container .separator {
+    position: absolute;
+    left: 22px;
+    right: 30px;
+    bottom: 75px;
+    width: 90%;
+    border-bottom: 1px solid var(--orange);
+}
+
+.city-forecast__container .close-icon{
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-top: -10px;
+    margin-right: 6px;
+    fill: var(--orange);
+}
+
+.city-forecast__container .city-forecast__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.city-forecast__container .city-forecast__wrapper strong {
+    color: var(--grey);
+}
+
+.city-forecast__container .city-forecast__wrapper h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--grey);
+    margin-top: 1rem;
+}
+
+.city-forecast__container .city-forecast__wrapper .city-forecast__temperature {
+    width: 100%;
+    display: flex;
+    margin-top: 1.2rem;
+}
+
+.city-forecast__container .city-forecast__wrapper .city-forecast__temperature .arrow-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--orange);
+}
+
+.city-forecast__container .city-forecast__wrapper .city-forecast__temperature strong:first-of-type {
+    margin-right: 0.2rem;
+    color: var(--grey);
+}
+
+.city-forecast__container .city-forecast__wrapper .city-forecast__temperature p {
+    margin-right: 0.4rem;
+    margin-left: 2.2rem;
+    font-weight: 200;
+    color: var(--grey);
+}
+
+.city-forecast__container .city-forecast__wrapper .city-forecast__wind {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-top: 1.4rem;
+}
+
+.city-forecast__container .city-forecast__wrapper .city-forecast__wind p {
+    margin-right: 2.2rem;
+    font-weight: 200;
+    color: var(--grey);
+}
+
+.city-forecast__container .city-forecast__wrapper .city-forecast__wind p strong {
+    margin-left: 0.4rem;
+    color: var(--grey);
+}
+
+@media (max-width: 768px) {
+    .city-forecast__container .close-icon{
+        margin-top: -10px;
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 393px) {
+    .city-forecast__container {
+        height: 265px;
+        margin-top: 1.2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 2rem;
+    }
+    
+    .city-forecast__container .close-icon{
+        margin-top: -5px;
+        margin-right: 10px;
+    }
+
+    .city-forecast__container .separator {
+        left: 15px;
+        right: 30px;
+        bottom: 75px;
+    }
+
+    .city-forecast__container .city-forecast__wrapper h1 {
+        font-size: 2.5rem;
+    }
+}
