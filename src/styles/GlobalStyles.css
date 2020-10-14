@@ -1,0 +1,40 @@
+:root {
+    --orange: #ffa500;
+    --lightOrange: #ffc04d;
+    --beige: #ffefd5;
+    --white: #FFF;
+    --black: #000;
+    --grey: #666666;
+
+    font-size: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*,
+html,
+input {
+    border: 0;
+    outline: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--white);
+}
+
+html,
+body,
+#root {
+    height: 100vh;
+    width: 100vw;
+
+    background-color: var(--lightOrange);
+}
+
+@media (max-width: 500px) {
+    :root {
+        font-size: 14px;
+    }
+}
