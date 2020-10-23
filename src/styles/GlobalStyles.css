@@ -30,7 +30,8 @@ body,
     height: 100vh;
     width: 100vw;
 
-    background-color: var(--lightOrange);
+    background-image: linear-gradient(to bottom, var(--orange), var(--lightOrange));
+    background-size: cover;
 }
 
 @media (max-width: 500px) {
