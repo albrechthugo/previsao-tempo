@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { RiCloseFill } from 'react-icons/ri';
-import { BsArrowDown } from 'react-icons/bs';
-import { BsArrowUp } from 'react-icons/bs';
+import { BsArrowDown, BsArrowUp } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 import './index.css';
@@ -31,8 +30,26 @@ const Forecast = () => {
       null,
 
       async function (err, data) {
-        const response = await JSON.parse(data);
-        console.log(response);
+        try {
+          const response = await JSON.parse(data);
+          console.log(response)
+
+          const { location, current_observation, forecasts } = response;
+
+          setCidade(location.city);
+          setEstado(location.region);
+          setPais(location.country);
+          setTemperaturaAtual(current_observation.condition.temperature);
+          setMinima(forecasts[0].low);
+          setMaxima(forecasts[0].high);
+          setCondicao(forecasts[0].text);
+          setSensacao(current_observation.wind.chill);
+          setVento(current_observation.wind.speed);
+          setUmidade(current_observation.atmosphere.humidity);
+
+        } catch(err) {
+          console.error(err);
+        }
       }
     )
   }
@@ -44,26 +61,43 @@ const Forecast = () => {
       <Link to="/">
           <RiCloseFill className="close-icon"/>
       </Link>
+
       <section className="city-forecast__wrapper">
-          <strong>{cidade}, {estado} - {pais}</strong>
-          <h1>{temperaturaAtual}° {condicao}</h1>
+          <strong>
+            {cidade}, {estado} - {pais}
+          </strong>
+
+          <h1>
+            {temperaturaAtual}° {condicao}
+            </h1>
 
         <article className="city-forecast__temperature">
           <BsArrowDown className="arrow-icon"/>
           <strong>{minima}°</strong>
               <BsArrowUp className="arrow-icon"/>
-              <strong>{maxima}°</strong>
-                  <p>Sensação</p>
-                  <strong>{sensacao}</strong>
+              <strong>
+                {maxima}°
+                </strong>
+                  <p>
+                    Sensação
+                    </p>
+                  <strong>
+                    {sensacao}°
+                    </strong>
         </article>
+
         <article className="city-forecast__wind">
           <p>Vento
-            <strong>{vento}km/h</strong>
+            <strong>
+              {vento}km/h
+              </strong>
           </p>
 
             <p>Umidade
-              <strong>{umidade}%</strong>
-              </p>
+              <strong>
+                {umidade}%
+                </strong>
+            </p>
         </article>
       </section>
 
