@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import './index.css';
 
 import request from "../../services/api";
+import translate from '../../utils/translate';
 
 const Forecast = () => {
   let inputText = sessionStorage.getItem('city');
@@ -20,19 +21,23 @@ const Forecast = () => {
   const [sensacao, setSensacao] = useState('26');
   const [vento, setVento] = useState('6');
   const [umidade, setUmidade] = useState('93');
-  const [condicao, setCondicao] = useState('Chuva');
-
+  const [condicao, setCondicao] = useState('Sol');
 
   const getData = (inputText) => {
+      let cityParam = 'joinville';
+
+      if(inputText != null) {
+          cityParam = inputText;
+      }
+
     request.get(
-      `https://weather-ydn-yql.media.yahoo.com/forecastrss?location=${inputText}&u=c&format=json`,
+      `https://weather-ydn-yql.media.yahoo.com/forecastrss?location=${cityParam}&u=c&format=json`,
       null,
       null,
 
       async function (err, data) {
         try {
           const response = await JSON.parse(data);
-          console.log(response)
 
           const { location, current_observation, forecasts } = response;
 
@@ -42,7 +47,7 @@ const Forecast = () => {
           setTemperaturaAtual(current_observation.condition.temperature);
           setMinima(forecasts[0].low);
           setMaxima(forecasts[0].high);
-          setCondicao(forecasts[0].text);
+          setCondicao(translate[forecasts[0].code]);
           setSensacao(current_observation.wind.chill);
           setVento(current_observation.wind.speed);
           setUmidade(current_observation.atmosphere.humidity);
