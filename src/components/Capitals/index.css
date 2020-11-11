@@ -1,6 +1,6 @@
 .capitals__container {
     width: 100%;
-    max-width: 450px;
+    max-width: 480px;
     display: flex;
     flex-direction: column;
     margin-left: 4rem;
@@ -19,15 +19,24 @@
 
 .capitals__container .capitals__row .capitals__content {
     display: flex;
-}
-
-.capitals__container .capitals__row .capitals__content:last-child {
-    margin-left: 14rem;
+    align-items: center;
 }
 
 .capitals__container .capitals__row .capitals__content p {
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: var(--grey);
+}
+
+.capitals__container .capitals__row .capitals__content span:first-of-type {
+    margin-left: 13rem;
+    margin-right: 2rem;
+    font-size: 1.1rem;
+    color: var(--beige);
+}
+
+.capitals__container .capitals__row .capitals__content span {
+    font-size: 1.1rem;
+    color: var(--beige);
 }
 
 .capitals__container .capitals__row .capitals__content p:last-child {
