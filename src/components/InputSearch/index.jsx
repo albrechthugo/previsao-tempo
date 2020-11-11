@@ -7,8 +7,15 @@ import './index.css';
 
 const InputSearch = () => {
   const [city, setCity] = useState('');
+  const [preenchido, setPreenchido] = useState(false);
 
   const handleInputSearch = (event) => {
+    if(event.target.value == '') {
+      setPreenchido(false);
+    } else {
+      setPreenchido(true);
+    }
+    
     setCity(event.target.value);
   };
 
@@ -23,16 +30,25 @@ const InputSearch = () => {
         onChange={handleInputSearch}
       />
 
-      <Link
-        to="/forecast"
-        className="search__link"
-      >
+      { preenchido ? 
+        <Link
+          to="/forecast"
+          className="search__link"
+        >
         <button>
           <BiSearchAlt2
             className="search__icon"
           />
         </button>
-      </Link>
+        </Link>
+      : 
+          <button>
+            <BiSearchAlt2
+              className="search__icon"
+            />
+          </button>
+      }    
+      
     </div>
   )
 };
