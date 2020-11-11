@@ -24,42 +24,37 @@ const Forecast = () => {
   const [condicao, setCondicao] = useState('Sol');
 
   const getData = (inputText) => {
-      let cityParam = 'joinville';
+      request.get(
+          `https://weather-ydn-yql.media.yahoo.com/forecastrss?location=${inputText}&u=c&format=json`,
+          null,
+          null,
 
-      if(inputText != null) {
-          cityParam = inputText;
-      }
+          async function (err, data) {
+              try {
+                  const response = await JSON.parse(data);
+                  console.log(response)
 
-    request.get(
-      `https://weather-ydn-yql.media.yahoo.com/forecastrss?location=${cityParam}&u=c&format=json`,
-      null,
-      null,
+                  const { location, current_observation, forecasts } = response;
 
-      async function (err, data) {
-        try {
-          const response = await JSON.parse(data);
+                  setCidade(location.city);
+                  setEstado(location.region);
+                  setPais(location.country);
+                  setTemperaturaAtual(current_observation.condition.temperature);
+                  setMinima(forecasts[0].low);
+                  setMaxima(forecasts[0].high);
+                  setCondicao(translate[forecasts[0].code]);
+                  setSensacao(current_observation.wind.chill);
+                  setVento(current_observation.wind.speed);
+                  setUmidade(current_observation.atmosphere.humidity);
 
-          const { location, current_observation, forecasts } = response;
+              } catch(err) {
+                  console.error(`Ops.. algo aconteceu aqui -> ${err}`);
+              }
+          }
+      )
+  };
 
-          setCidade(location.city);
-          setEstado(location.region);
-          setPais(location.country);
-          setTemperaturaAtual(current_observation.condition.temperature);
-          setMinima(forecasts[0].low);
-          setMaxima(forecasts[0].high);
-          setCondicao(translate[forecasts[0].code]);
-          setSensacao(current_observation.wind.chill);
-          setVento(current_observation.wind.speed);
-          setUmidade(current_observation.atmosphere.humidity);
-
-        } catch(err) {
-          console.error(err);
-        }
-      }
-    )
-  }
-
-  useEffect(() => getData(inputText), [inputText])
+  useEffect(() => getData(inputText), [])
 
   return (
     <main className="city-forecast__container">
