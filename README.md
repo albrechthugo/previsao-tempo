@@ -42,4 +42,6 @@ Os dados de clima são recebidos pela <a href="https://developer.yahoo.com/weath
 
 ## 3. Preview Desktop (aplicação em desenvolvimento)
 
+<img src="./public/Desktop.png" />
+
 ## 4. Preview Mobile (aplicação em desenvolvimento)
