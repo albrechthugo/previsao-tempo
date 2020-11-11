@@ -23,7 +23,6 @@ const CityInfos = () => {
             <div className="forecast__container" style={containerStyle}>
                 <Title/>
                 <Forecast/>
-                <InputSearch/>
                 <Separator/>
                 <Capitals/>
             </div>
